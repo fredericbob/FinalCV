@@ -1,0 +1,65 @@
+/* Styles pour la page d'accueil */
+.accueil-container {
+    text-align: center;
+    padding-top: 70px; /* Augmente l'espace au-dessus du contenu pour le monter */
+}
+
+.animated-title {
+    font-size: 3rem;
+    color: #007bff;
+    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 10px; /* Réduit l'espace sous le titre */
+}
+
+.animated-text {
+    font-size: 1.2rem;
+    margin-top: 10px; /* Diminue l'espace entre les paragraphes */
+    animation: slideUp 2s ease-in-out;
+}
+
+.animated-text.delay {
+    animation-delay: 1s;
+}
+
+/* Section pour les images */
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Ajuste la marge pour rapprocher les images du texte */
+}
+
+.animated-image {
+    width: 300px; /* Taille des images */
+    margin: 0 20px; /* Espace entre les images */
+}
+
+/* Supprime les animations pour les images */
+.bounce, .rotate {
+    animation: none; /* Désactive les animations */
+}
+
+/* Animation pour le titre qui apparaît progressivement */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation pour le texte qui monte avec un effet */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+

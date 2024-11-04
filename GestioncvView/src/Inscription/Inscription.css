@@ -1,0 +1,16 @@
+.form-container {
+    background-image: url('../assets/img/cv.jpg'); /* Chemin de ton image */
+    background-size: cover; /* Pour que l'image couvre tout l'espace */
+    background-position: center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Empêcher la répétition de l'image */
+    min-height: 100vh; /* Assure que la section couvre tout l'écran verticalement */
+    margin: 0; /* Enlève la marge par défaut du body */
+    display: flex; /* Utiliser flex pour centrer le contenu si nécessaire */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    height: 100vh; /* Assure que le body prend toute la hauteur de l'écran */
+}
+
+
+
+

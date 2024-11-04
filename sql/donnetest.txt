@@ -1,0 +1,59 @@
+RAKOTONIRINA LALA frédéric
+
+développeur
+
+CONTACT:
+I 119 B Manaritsoa Lohanosy
+lalafrederic05@gmail.com
+0388516471
+
+Profile:
+J'ai récemment terminé un stage de trois mois au sein de la société SASU et je suis actuellement à la recherche d'une nouvelle opportunité professionnelle. Étudiant en développement d'applications à l'IT University, je suis passionné par le développement logiciel. Mon objectif est de rejoindre une équipe dynamique où je pourrai contribuer activement à des projets innovants. Je suis déterminé à apporter ma rigueur, ma créativité et mon esprit collaboratif pour ajouter une réelle valeur à votre entreprise.
+
+
+Titre cv: developpeur web
+domaine:developpeur web ,mobile
+
+Competences TECHIQUES:
+C++ 
+Python 
+Java 
+Javascript 
+
+
+experience:
+Développeur Full Stack
+Loveni consulting
+Janvier 2001
+Janvier 2005
+Application web et mobile en ligne pour la vente et l’achat de voiture d’occasion,incluant la gestion des annonces,recherche filtrée et achat integré pour la communication directe.
+Héberger en ligne en utilisant les plateformes(Railway,...)
+
+Chef de Projet Technique
+Banque central
+JUIN 2005
+JUIN 2010
+Application web destinée à gérer et à suivre le déroulement et les résultats de la course à pied par équipe "ULTIMATE TEAM RACE", organisée sur deux jours. Cette application offre une gestion efficace et structurée des différentes étapes de la course et permet de visualiser les performances de chaque équipe et coureur.
+
+Ingénieur DevOps
+BMOA
+Avril 2010
+Avril 2024
+Une application web pour une entreprise de construction BTP afin de gérer divers aspects de son activité. L'application couvre les domaines technique et financier, et offre des outils de suivi et de statistiques pour une gestion optimale des projets de construction.
+
+Languages:
+
+Malagasy
+Anglais
+français
+
+
+EDUCATION:
+Baccalauréat série c
+2018 à 2019
+La  PIMPRENELLE
+
+L3 en
+2023 à 2024
+IT UNIVERSITY
+

@@ -1,0 +1,167 @@
+.cv-container {
+    display: flex;
+    width: 220mm; /* Largeur d'une feuille A4 */
+    height: 297mm; /* Hauteur d'une feuille A4 */
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    padding: 20px;
+    border: 2px solid #ddd;
+    background-color: antiquewhite;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.cv-header {
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: -13px;
+    position: sticky;
+    top: 0;
+    background-color: antiquewhite;
+    z-index: 10;
+    padding: 10px;
+}
+
+.cv-header h1 {
+    font-size: 24pt; /* Taille ajustée pour le nom */
+    margin: 0;
+    font-weight: 700;
+}
+
+.cv-header h3 {
+    font-size: 14pt; /* Taille ajustée pour le titre */
+    margin: 0;
+    font-weight: 300;
+}
+
+.cv-sidebar {
+    flex-basis: 30%;
+    background-color: #2e2e2e;
+    padding: 15px;
+
+}
+
+.cv-main {
+    flex-basis: 70%;
+}
+
+.cv-section {
+    margin-bottom: 20px;
+}
+
+.cv-section h4 {
+    font-size: 12pt; /* Taille ajustée pour les titres des sections */
+    margin-bottom: 10px;
+    border-bottom: 2px solid #bbb;
+    padding-bottom: 5px;
+    color: #4a4a4a;
+    position: sticky;
+    top: 0;
+    background-color: antiquewhite;
+    z-index: 9;
+    padding: 5px 0;
+}
+
+.cv-section li {
+    list-style-type: none;
+    font-size: 10pt; /* Taille ajustée pour le texte des listes */
+    padding: 1px 0;
+}
+
+.cv-section li u {
+    text-decoration: none;
+}
+
+.cv-experience {
+    margin-bottom: 15px;
+}
+
+.cv-experience h3 {
+    font-size: 12pt; /* Taille ajustée pour les postes */
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.cv-experience span {
+    font-size: 9pt; /* Taille ajustée pour les dates */
+    color: #666;
+}
+
+.cv-experience p {
+    font-size: 10pt; /* Taille ajustée pour la description des expériences */
+    color: #333;
+}
+
+.cv-profile p, .cv-contact p,.cv-langue p  {
+    font-size: 10pt; /* Taille ajustée pour le profil et les coordonnées */
+    margin: 0;
+    color: #F0EAD6;
+}
+
+.cv-contact {
+    margin-top: 90px;
+}
+
+.cv-langue h4{
+    margin-top: 500px;
+}
+
+
+.cv-contact, .cv-profile, .cv-langue {
+    margin-bottom: 15px;
+    color: white;
+}
+
+.cv-skills {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cv-skills h5 {
+    font-size: 12pt; /* Taille ajustée pour les sous-titres des compétences */
+    margin-bottom: 10px;
+    color: #4a4a4a;
+}
+
+.cv-skills ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 10pt; /* Taille ajustée pour les compétences */
+}
+
+.cv-skills ul li {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.cv-diplome {
+    margin-bottom: 15px;
+}
+
+.cv-diplome-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cv-diplome h3 {
+    font-size: 12pt; /* Taille ajustée pour les diplômes */
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.cv-diplome span {
+    font-size: 9pt; /* Taille ajustée pour la date des diplômes */
+    color: #666;
+    margin-left: 20px;
+}
+
+.cv-diplome p {
+    font-size: 10pt; /* Taille ajustée pour les établissements */
+    color: #333;
+    margin-top: 5px;
+}
