@@ -80,24 +80,25 @@ const Import = () => {
                         titre: outputData.summary?.display_name || "",
                         typecv: "Développeur JAVA",
                     };
-                    const languagePayload = [...(outputData.skills?.value || [])].map(item => ({ language: item}));
-                    const experiencePaylod = [...(outputData.work_experience?.value || [])].map(item => ({
-                        poste: item.position.value,
-                        entreprise: item.company.value,
-                        debut: item.start_date.value,
-                        fin: item.end_date.value,
-                        description: item.descriptions.value,
+                    const languagePayload = [...(outputData?.skills?.value || [])].map(item => ({ language: item}));
+                    const experiencePaylod = [...(outputData?.work_experience?.value || [])].map(item => ({
+                        poste: item?.position?.value || "",
+                        entreprise: item?.company?.value || "",
+                        debut: item?.start_date?.value || "",
+                        fin: item?.end_date?.value || "",
+                        description: item?.descriptions?.value || "",
                     }));
                     const diplomePayload = [...(outputData.education?.value || [])].map(item => ({
-                        diplome: item.degree.value,
-                        dateobtention: item.dates.value,
-                        etablissement: item.university.value,
+                        diplome: item?.degree?.value || "",
+                        dateobtention: item?.dates?.value || "",
+                        etablissement: item?.university?.value || "",
                     }));
                     setPersonne(personnePayload);
                     setCv(cvPayload);
                     setLanguages(languagePayload);
                     setExperiences(experiencePaylod);
                     setDiplomes(diplomePayload);
+                    console.log("TEst")
 
                     axios.post(`http://localhost:8080/personnes/savePersonne/${userId}`, personnePayload, {
                         headers: {
