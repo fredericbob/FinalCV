@@ -86,7 +86,8 @@ const Import = () => {
                         entreprise: item?.company?.value || "",
                         debut: item?.start_date?.value || "",
                         fin: item?.end_date?.value || "",
-                        description: item?.descriptions?.value || "",
+                        description: Array.isArray(item?.descriptions?.value) 
+                        ? item.descriptions.value.join(" ") : "",
                     }));
                     const diplomePayload = [...(outputData?.education?.value || [])].map(item => ({
                         diplome: item?.degree?.value || "",
