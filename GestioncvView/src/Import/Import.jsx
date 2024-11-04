@@ -61,23 +61,23 @@ const Import = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             }).then((response) => {
-                if (response.data.status === 'success') {
-                    console.log(response.data.output);
-                    localStorage.setItem("resume_parsed", JSON.stringify(response.data.output));
-                    let personne_data = JSON.parse(JSON.stringify(response.data.output));
-                    const outputData = response.data.output;
+                if (response?.data?.status === 'success') {
+                    console.log(response?.data?.output);
+                    localStorage.setItem("resume_parsed", JSON.stringify(response?.data?.output));
+                    let personne_data = JSON.parse(JSON.stringify(response?.data?.output));
+                    const outputData = response?.data?.output;
                     const personnePayload = {
                         nom: outputData.name?.value || "",
                         date_naissance:
-                            parseDateFrancais(outputData.date_of_birth?.value) || "",
-                        adresse: outputData.address?.value || "",
-                        email: outputData.email?.value || "",
-                        telephone: outputData.phone?.value || "",
+                            parseDateFrancais(outputData?.date_of_birth?.value) || "",
+                        adresse: outputData?.address?.value || "",
+                        email: outputData?.email?.value || "",
+                        telephone: outputData?.phone?.value || "",
                         genre: "",
                         statutmatrimonial: "",
                     };
                     const cvPayload = {
-                        titre: outputData.summary?.display_name || "",
+                        titre: outputData?.summary?.display_name || "",
                         typecv: "Développeur JAVA",
                     };
                     const languagePayload = [...(outputData?.skills?.value || [])].map(item => ({ language: item}));
@@ -88,7 +88,7 @@ const Import = () => {
                         fin: item?.end_date?.value || "",
                         description: item?.descriptions?.value || "",
                     }));
-                    const diplomePayload = [...(outputData.education?.value || [])].map(item => ({
+                    const diplomePayload = [...(outputData?.education?.value || [])].map(item => ({
                         diplome: item?.degree?.value || "",
                         dateobtention: item?.dates?.value || "",
                         etablissement: item?.university?.value || "",
