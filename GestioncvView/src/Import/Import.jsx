@@ -29,7 +29,7 @@ if (token) {
 
 const Import = () => {
     console.log(userRole)
-    let rootRedirect = "/client//exportpdf";
+    let rootRedirect = "/client/exportpdf";
     if (userRole ==='admin') rootRedirect='/admin/';
     const [file, setFiles] = useState(null);
     const [personne, setPersonne] = useState({});
@@ -99,7 +99,7 @@ const Import = () => {
                     setExperiences(experiencePaylod);
                     setDiplomes(diplomePayload);
 
-                    axios.post(`http://localhost:8080/personnes/savePersonne/${userId}`, personne, {
+                    axios.post(`http://localhost:8080/personnes/savePersonne/${userId}`, personnePayload, {
                         headers: {
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${token}`,
@@ -114,10 +114,10 @@ const Import = () => {
                         };
 
                         Promise.all([
-                            axios.post(`http://localhost:8080/personnes/saveCv/${personne_id}`, cv, {headers}),
-                            axios.post(`http://localhost:8080/personnes/saveExperiences/${personne_id}`, experiences, {headers}),
-                            axios.post(`http://localhost:8080/personnes/saveDos/${personne_id}`, diplomes, {headers}),
-                            axios.post(`http://localhost:8080/personnes/saveLanguages/${personne_id}`, languages, {headers})
+                            axios.post(`http://localhost:8080/personnes/saveCv/${personne_id}`, cvPayload, {headers}),
+                            axios.post(`http://localhost:8080/personnes/saveExperiences/${personne_id}`, experiencePaylod, {headers}),
+                            axios.post(`http://localhost:8080/personnes/saveDos/${personne_id}`, diplomePayload, {headers}),
+                            axios.post(`http://localhost:8080/personnes/saveLanguages/${personne_id}`, languagePayload, {headers})
                         ]).then(() => {
                             console.log("saved all data");
                             window.location.href = rootRedirect;
