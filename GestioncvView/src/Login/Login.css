@@ -1,0 +1,13 @@
+.l-c {
+    font-size: 24px;               /* Augmenter la taille du texte */
+    font-weight: bold;             /* Mettre en gras */
+    color: #007bff;                /* Utiliser une couleur vive, par exemple bleu */
+    letter-spacing: 2px;           /* Espacement des lettres pour un effet plus "pro" */
+    text-transform: uppercase;     /* Mettre le texte en majuscules */
+    transition: all 0.3s ease;     /* Transition douce pour les effets de survol */
+}
+
+.l-c:hover {
+    color: #0056b3;                /* Changer la couleur lors du survol */
+    transform: scale(1.1);         /* Agrandir légèrement au survol */
+}

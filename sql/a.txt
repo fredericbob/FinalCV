@@ -1,0 +1,66 @@
+psql -U postgres -d gestioncv_vraie -f D:/finalProjetStage/Gestioncv/sql/script.sql
+
+psql -U postgres -d cvtest -f D:\FinalCms\Gestioncv\sql/script.sql
+
+
+ALTER TABLE cv_description ADD COLUMN is_read BOOLEAN DEFAULT FALSE;
+
+
+CREATE TABLE langues (
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(50)   
+);
+
+INSERT INTO langues (nom) VALUES ('Français');
+INSERT INTO langues (nom) VALUES ('Anglais');
+INSERT INTO langues (nom) VALUES ('Espagnol');
+INSERT INTO langues (nom) VALUES ('Allemand');
+INSERT INTO langues (nom) VALUES ('Italien');
+INSERT INTO langues (nom) VALUES ('Chinois');
+INSERT INTO langues (nom) VALUES ('Japonais');
+INSERT INTO langues (nom) VALUES ('Arabe');
+INSERT INTO langues (nom) VALUES ('Russe');
+INSERT INTO langues (nom) VALUES ('Portugais');
+
+
+CREATE TABLE personne_langue (
+    id SERIAL PRIMARY KEY,       
+    id_personne INT NOT NULL,    
+    id_langue INT NOT NULL, 
+  niveau VARCHAR(20)       ,     
+    FOREIGN KEY (id_personne) REFERENCES personne(id) ON DELETE CASCADE,     FOREIGN KEY (id_langue) REFERENCES langues(id) ON DELETE CASCADE       
+);
+
+SELECT setval('cv_archive_id_seq', (SELECT MAX(id) FROM cv_archive) + 1);
+SELECT setval('cv_description_id_seq', (SELECT MAX(id) FROM cv_description) + 1);
+SELECT setval('cv_id_seq', (SELECT MAX(id) FROM cv) + 1);
+SELECT setval('diplomeobtention_id_seq', (SELECT MAX(id) FROM diplomeobtention) + 1);
+SELECT setval('experience_id_seq', (SELECT MAX(id) FROM experience) + 1);
+SELECT setval('genre_id_seq', (SELECT MAX(id) FROM genre) + 1);
+SELECT setval('language_de_programmation_id_seq', (SELECT MAX(id) FROM language_de_programmation) + 1);
+SELECT setval('personne_id_seq', (SELECT MAX(id) FROM personne) + 1);
+SELECT setval('role_id_seq', (SELECT MAX(id) FROM role) + 1);
+SELECT setval('utilisateur_id_seq', (SELECT MAX(id) FROM utilisateur) + 1);
+
+
+
+SELECT MAX(id) FROM public.diplomeobtention;
+
+INSERT INTO public.cv (id, idpersonne, titre, typecv, date_reception) VALUES
+(15, 1, 'Consultant IT', 'Stratégie IT', '2022-12-01'),
+(16, 1, 'Ingénieur DevOps', 'DevOps', '2021-09-15'),
+(17, 1, 'Chef de Projet Technique', 'Gestion de projet technique', '2020-06-01'),
+(18, 1, 'Analyste de Données', 'Analyse de Données', '2024-10-01');
+
+
+INSERT INTO public.diplomeobtention (id, idpersonne, diplome, dateobtention, etablissement) VALUES
+(11, 1, 'Formation Développement Web', '2016', 'OpenClassrooms'),
+(12, 1, 'Certification DevOps', '2017', 'Cloud Academy'),
+(13, 1, 'Certification Gestion de Projet', '2018', 'PMI Institute'),
+(14, 1, 'Master en Science des Données', '2019', 'Université de Paris');
+
+
+INSERT INTO public.experience (id, idpersonne, poste, entreprise, debut, fin, description) VALUES
+(11, 1, 'Ingénieur DevOps', 'CloudWorks', '2019-01-01', '2021-08-31', 'Intégration continue et déploiement architectures cloud.'),
+(12, 1, 'Chef de Projet Technique', 'TechLead', '2020-02-15', '2023-05-01', 'Coordination des équipes pour la mise en œuvre des solutions logicielles complexes.'),
+(13, 1, 'Analyste de Données', 'Data Solutions', '2023-07-01', '2024-09-30', 'Analyse de données et génération de rapports.');
