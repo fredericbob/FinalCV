@@ -29,7 +29,7 @@ if (token) {
 
 const Import = () => {
     console.log(userRole)
-    let rootRedirect = "/client/";
+    let rootRedirect = "/client//exportpdf";
     if (userRole ==='admin') rootRedirect='/admin/';
     const [file, setFiles] = useState(null);
     const [personne, setPersonne] = useState({});
@@ -65,22 +65,39 @@ const Import = () => {
                     console.log(response.data.output);
                     localStorage.setItem("resume_parsed", JSON.stringify(response.data.output));
                     let personne_data = JSON.parse(JSON.stringify(response.data.output));
-                    setPersonne({
-                        nom: personne_data.name?.value || '',
-                        date_naissance: parseDateFrancais(personne_data.date_of_birth?.value) || '',
-                        adresse: personne_data.address?.value || '',
-                        email: personne_data.email?.value || '',
-                        telephone: personne_data.phone?.value || '',
-                        genre: '',
-                        statutmatrimonial: ''
-                    });
-                    setCv({
-                        titre: personne_data.summary?.display_name || '',
-                        typecv: 'Développeur JAVA'
-                    });
-                    setLanguages(personne_data.skills?.value || []);
-                    setExperiences(personne_data.projects?.value || []);
-                    setDiplomes(personne_data.education?.value || []);
+                    const outputData = response.data.output;
+                    const personnePayload = {
+                        nom: outputData.name?.value || "",
+                        date_naissance:
+                            parseDateFrancais(outputData.date_of_birth?.value) || "",
+                        adresse: outputData.address?.value || "",
+                        email: outputData.email?.value || "",
+                        telephone: outputData.phone?.value || "",
+                        genre: "",
+                        statutmatrimonial: "",
+                    };
+                    const cvPayload = {
+                        titre: outputData.summary?.display_name || "",
+                        typecv: "Développeur JAVA",
+                    };
+                    const languagePayload = [...(outputData.skills?.value || [])].map(item => ({ language: item}));
+                    const experiencePaylod = [...(outputData.work_experience?.value || [])].map(item => ({
+                        poste: item.position.value,
+                        entreprise: item.company.value,
+                        debut: item.start_date.value,
+                        fin: item.end_date.value,
+                        description: item.descriptions.value,
+                    }));
+                    const diplomePayload = [...(outputData.education?.value || [])].map(item => ({
+                        diplome: item.degree.value,
+                        dateobtention: item.dates.value,
+                        etablissement: item.university.value,
+                    }));
+                    setPersonne(personnePayload);
+                    setCv(cvPayload);
+                    setLanguages(languagePayload);
+                    setExperiences(experiencePaylod);
+                    setDiplomes(diplomePayload);
 
                     axios.post(`http://localhost:8080/personnes/savePersonne/${userId}`, personne, {
                         headers: {
@@ -115,7 +132,6 @@ const Import = () => {
         } else {
             alert('Veuillez sélectionner un fichier avant de valider.');
         }
-        window.location.href = rootRedirect;
     };
 
     const ajoutCv = (personne_data) => {
