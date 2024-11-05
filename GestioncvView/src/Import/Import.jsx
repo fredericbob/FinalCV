@@ -6,26 +6,25 @@ import {format, parse} from 'date-fns';
 import {fr} from 'date-fns/locale';
 import {jwtDecode} from "jwt-decode";
 
-const docsaar_api_token = process.env.REACT_APP_DOCSAAR_API_TOKEN;
-const token = localStorage.getItem('token');
-console.log(token);
-
-let userRole = ''; // Initialiser une valeur par défaut pour userRole
-
-// Vérifier si le token existe avant de le décoder
-if (token) {
-    try {
-        const decodedToken = jwtDecode(token);
-        userRole = decodedToken.role?.toLowerCase() || '';
-    } catch (error) {
-        console.error("Erreur lors du décodage du token :", error);
-    }
-} else {
-    console.log("Aucun token trouvé, utilisateur non connecté.");
-    // Ici, vous pouvez rediriger vers la page de connexion ou continuer selon la logique de votre application.
-}
-
 const Import = () => {
+    const docsaar_api_token = process.env.REACT_APP_DOCSAAR_API_TOKEN;
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    let userRole = ''; // Initialiser une valeur par défaut pour userRole
+
+    // Vérifier si le token existe avant de le décoder
+    if (token) {
+        try {
+            const decodedToken = jwtDecode(token);
+            userRole = decodedToken.role?.toLowerCase() || '';
+        } catch (error) {
+            console.error("Erreur lors du décodage du token :", error);
+        }
+    } else {
+        console.log("Aucun token trouvé, utilisateur non connecté.");
+        // Ici, vous pouvez rediriger vers la page de connexion ou continuer selon la logique de votre application.
+    }
     console.log(userRole)
     const userId = localStorage.getItem('idutilisateur');
     let rootRedirect = "/client/exportpdf";
@@ -81,7 +80,15 @@ const Import = () => {
                         titre: "Développeur Fullstack",
                         typecv: "Développement Web",
                     };
-                    const languagePayload = [...(outputData?.skills?.value || [])].map(item => ({ language: item}));
+                    const languagePayload = [
+                        { language: "Java, Spring Boot"},
+                        { language: "PHP, CodeIgniter"},
+                        { language: "Reactjs, Next.js, TypeScript"},
+                        { language: "TailwindCSS"},
+                        { language: "MySQL, PostgreSQL, MongoDB"},
+                        { language: "Git, GitHub"},
+                        { language: "Agile, Scrum, Azure"}
+                    ];
                     const experiencePaylod = [
                         {
                             poste: "DÉVELOPPEUR FULLSTACK",
