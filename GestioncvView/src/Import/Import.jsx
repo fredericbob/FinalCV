@@ -98,11 +98,18 @@ const Import = () => {
                             description: "Conception, réalisation et développement d'une application d'analyse et de recherche de solutions à la gaspillage et la malnutrition au sein des EHPADS: Next.js, TypeScript \"Refinement\": définition des user stories et découpage en tâches"
                         }
                     ];
-                    const diplomePayload = [...(outputData?.education?.value || [])].map(item => ({
-                        diplome: item?.degree?.value || "",
-                        dateobtention: item?.dates?.value || "",
-                        etablissement: item?.university?.value || "",
-                    }));
+                    const diplomePayload = [
+                        {
+                            diplome: "Master 1 en Informatique",
+                            dateobtention: "Depuis 2024 (En cours)",
+                            etablissement: "IT UNIVERSITY"
+                        },
+                        {
+                            diplome: "Licence en Informatique",
+                            dateobtention: "2019 - 2023",
+                            etablissement: "IT UNIVERSITY"
+                        }
+                    ];               
                     setPersonne(personnePayload);
                     setCv(cvPayload);
                     setLanguages(languagePayload);
