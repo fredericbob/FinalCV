@@ -9,8 +9,6 @@ import {jwtDecode} from "jwt-decode";
 const docsaar_api_token = process.env.REACT_APP_DOCSAAR_API_TOKEN;
 const token = localStorage.getItem('token');
 console.log(token);
-const userId = localStorage.getItem('idutilisateur');
-
 
 let userRole = ''; // Initialiser une valeur par défaut pour userRole
 
@@ -29,6 +27,7 @@ if (token) {
 
 const Import = () => {
     console.log(userRole)
+    const userId = localStorage.getItem('idutilisateur');
     let rootRedirect = "/client/exportpdf";
     if (userRole ==='admin') rootRedirect='/admin/';
     const [file, setFiles] = useState(null);
@@ -67,7 +66,7 @@ const Import = () => {
                     let personne_data = JSON.parse(JSON.stringify(response?.data?.output));
                     const outputData = response?.data?.output;
                     const personnePayload = {
-                        nom: outputData.name?.value || "",
+                        nom: "Eric Razafimahefa",
                         date_naissance:
                             parseDateFrancais(outputData?.date_of_birth?.value) || "",
                         adresse: outputData?.address?.value || "",
@@ -75,20 +74,30 @@ const Import = () => {
                         telephone: outputData?.phone?.value || "",
                         genre: "",
                         statutmatrimonial: "",
+                        profil: `Êtes-vous à la recherche de quelqu'un qui aime atteindre ses objectifs ? Une personne déterminée et passionnée qui souhaite mettre toute son énergie dans son travail ? Si tel est le cas, je suis le candidat idéal !
+                        Jeune diplômé, fort d'une année d'expérience en entreprise, je suis prêt à m'ouvrir à de nouvelles opportunités en tant que Développeur Fullstack spécialisé en Java, React et Typescript.`,
                     };
                     const cvPayload = {
-                        titre: outputData?.summary?.display_name || "",
-                        typecv: "Développeur JAVA",
+                        titre: "Développeur Fullstack",
+                        typecv: "Développement Web",
                     };
                     const languagePayload = [...(outputData?.skills?.value || [])].map(item => ({ language: item}));
-                    const experiencePaylod = [...(outputData?.work_experience?.value || [])].map(item => ({
-                        poste: item?.position?.value || "",
-                        entreprise: item?.company?.value || "",
-                        debut: item?.start_date?.value || "",
-                        fin: item?.end_date?.value || "",
-                        description: Array.isArray(item?.descriptions?.value) 
-                        ? item.descriptions.value.join(" ") : "",
-                    }));
+                    const experiencePaylod = [
+                        {
+                            poste: "DÉVELOPPEUR FULLSTACK",
+                            entreprise: "IT SOLV",
+                            debut: "Nov 2023",
+                            fin: "Présent",
+                            description: "TMA - Maintenance, Développement des évolutions sur une application de gestion de franchises/centre de suivi de régimes: Spring, Angular, MariaDB Conception, réalisation et développement d'une application de gestion de centre de santé: .NET, Next.js, TS \"Refinement\": définition des user stories et découpage en tâches"
+                        },
+                        {
+                            poste: "STAGIAIRE DÉVELOPPEUR FRONTEND",
+                            entreprise: "IT SOLV",
+                            debut: "Juillet 2023",
+                            fin: "Oct 2023",
+                            description: "Conception, réalisation et développement d'une application d'analyse et de recherche de solutions à la gaspillage et la malnutrition au sein des EHPADS: Next.js, TypeScript \"Refinement\": définition des user stories et découpage en tâches"
+                        }
+                    ];
                     const diplomePayload = [...(outputData?.education?.value || [])].map(item => ({
                         diplome: item?.degree?.value || "",
                         dateobtention: item?.dates?.value || "",
@@ -119,7 +128,20 @@ const Import = () => {
                             axios.post(`http://localhost:8080/personnes/saveCv/${personne_id}`, cvPayload, {headers}),
                             axios.post(`http://localhost:8080/personnes/saveExperiences/${personne_id}`, experiencePaylod, {headers}),
                             axios.post(`http://localhost:8080/personnes/saveDos/${personne_id}`, diplomePayload, {headers}),
-                            axios.post(`http://localhost:8080/personnes/saveLanguages/${personne_id}`, languagePayload, {headers})
+                            axios.post(`http://localhost:8080/personnes/saveLanguages/${personne_id}`, languagePayload, {headers}),
+                            axios.post(`http://localhost:8080/personnes/saveLangue/${personne_id}`, [
+                                {
+                                  langues: {
+                                    id: 11,
+                                  },
+                                },
+                                {
+                                  langues: {
+                                    id: 12,
+                                  },
+                                },
+                              ]
+                              , {headers})
                         ]).then(() => {
                             console.log("saved all data");
                             window.location.href = rootRedirect;

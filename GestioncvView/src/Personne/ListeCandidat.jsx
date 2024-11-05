@@ -213,7 +213,7 @@ function ListeCandidat() {
 
                                 return (
                                     <li key={expIndex}>
-                                      {exp.poste}:({years} ans)
+                                      {exp.poste}{`${Boolean(years) ? `:(${years} ans)`: ''}`}
                                     </li>
                                 );
                               })}
